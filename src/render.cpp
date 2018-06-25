@@ -20,8 +20,11 @@
 
 using namespace renderspace;
 
-const int window_width = 1800;
-const int window_height = 1100;
+const int window_width = 1000;
+const int window_height = 1000;
+
+// const int window_width = 1800;
+// const int window_height = 1100;
 
 float eyeX = 0;
 float eyeY = 0;
@@ -130,13 +133,12 @@ void renderspace::initialize(){
   glutInitWindowSize(window_width, window_height);
   glutCreateWindow("");
   
-  
   glutPassiveMotionFunc(controlspace::mouseRotateCamera);
-  glutDisplayFunc(renderspace::display);
-  glutIdleFunc(renderspace::display);		
-
   glutKeyboardFunc(controlspace::keyPressed);
-  glutKeyboardUpFunc(controlspace::keyReleased);
+  glutKeyboardUpFunc(controlspace::keyReleased);  
+
+  glutDisplayFunc(renderspace::display);
+  glutIdleFunc(renderspace::display);
    
   //glutReshapeFunc(resize);
 
@@ -194,12 +196,12 @@ void renderspace::display(){
 
   controlspace::setCoordinates(&eyeX, &eyeY, &eyeZ, &objectX, &objectY, &objectZ,(float) timeDelta);
   glm::mat4 projection = glm::perspective<float>(50.0,
-						 (float) (window_width / window_height ),
-						 0.1, 400.0);
+												 (float) (window_width / window_height ),
+												 0.1, 40000.0);
 
   glm::mat4 camera = glm::lookAt(glm::vec3(eyeX,eyeY,eyeZ),
-				 glm::vec3(objectX,objectY,objectZ), 
-				 glm::vec3(0,1,0));
+								 glm::vec3(objectX,objectY,objectZ), 
+								 glm::vec3(0,1,0));
 
   glUseProgram(shader.getProgram());
 

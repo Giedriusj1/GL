@@ -5,7 +5,6 @@ CFLAGS = -Wall -std=c++11 -c $(DEBUG)
 LFLAGS = -Wall $(DEBUG) -L/usr/lib64 -lGLEW -lGLU -lGL  -lglut -lpthread
 
 
-
 all:  $(OBJS) 
 	$(CC) $(LFLAGS) $(OBJS) -o supergl
 

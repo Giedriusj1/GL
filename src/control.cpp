@@ -44,11 +44,11 @@ namespace controlspace{
       double alphaX =  x -  window_width  / 2;
       double alphaY = ( window_height / 2) - y;
 
-      rotationX += alphaX * mouseSensitivity; ;
-      rotationY += alphaY * mouseSensitivity;
+      rotationX -= alphaX * mouseSensitivity;
+      rotationY -= alphaY * mouseSensitivity;
 
-      if(rotationY > -0.0001){rotationY = -0.0001;}
-      if(rotationY < -pi  ){rotationY = -pi;}
+      // if(rotationY > -0.0001){rotationY = -0.0001;}
+      // if(rotationY < -pi  ){rotationY = -pi;}
 
       //std::cout << rotationX << " " << rotationY << std::endl;
       //std::cout << win.width / 2 << " " << win.height / 2 << std::endl;
@@ -77,11 +77,11 @@ namespace controlspace{
       captureMouse = true;
       break;
 
-    case '1':
+    case '2':
       speedScale = speedScale * 2;
       break;
       
-    case '2':
+    case '1':
       speedScale = speedScale / 2;
       break;
 
@@ -103,9 +103,9 @@ namespace controlspace{
   void checkKeyboard(double delta){
     // delta = delta * cameraScale;
 
-    if(delta <0 || delta > 100){delta = 0;}
+    // if (delta <0 || delta > 100) {delta = 0;}
     
-    delta = delta * 9;
+    // delta = delta * 9;
 
     //eyeY = eyeY - 0.1 * delta;
 
@@ -124,18 +124,20 @@ namespace controlspace{
     }
     if(keys['a']){
 
-      eyeX -= cos(rotationX - (pi / 2)) * delta;
-      eyeZ -= sin(rotationX - (pi / 2)) * delta;
-      updateCamera();
-    }
-    if(keys['d']){
-
       eyeX += cos(rotationX - (pi / 2)) * delta;
       eyeZ += sin(rotationX - (pi / 2)) * delta;
       updateCamera();
     }
+    if(keys['d']){
 
-    if(keys[' ']){eyeY += delta; updateCamera();  }
+      eyeX -= cos(rotationX - (pi / 2)) * delta;
+      eyeZ -= sin(rotationX - (pi / 2)) * delta;
+      updateCamera();
+    }
+
+    if (keys[' ']) {
+		eyeY -= delta;
+		updateCamera();  }
 
   }
 

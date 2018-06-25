@@ -9,7 +9,7 @@
 #include <string>
 
 
-static const int arrSize = 100;
+static const int arrSize = 200;
 
 bool dist(int ax,int ay,int az,int bx,int by,int bz){
 
