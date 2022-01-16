@@ -3,18 +3,11 @@
 #include "../render.h"
 #include <pthread.h>
 
-
-
-
-class network{
+class network {
 
 public:
-  
-
-public:
-
-  pthread_t thread;
-  // void * task_code();
-  network();
-  ~network();
+    pthread_t thread;
+    // void * task_code();
+    network();
+    ~network();
 };

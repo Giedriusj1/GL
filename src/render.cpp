@@ -14,7 +14,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include <boost/date_time/posix_time/posix_time_types.hpp>
+#include <boost/date_time.hpp>
 
 #include "marchingCubesHelper.h"
 
@@ -22,9 +22,6 @@ using namespace renderspace;
 
 const int window_width = 1000;
 const int window_height = 1000;
-
-// const int window_width = 1800;
-// const int window_height = 1100;
 
 float eyeX = 0;
 float eyeY = 0;

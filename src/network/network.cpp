@@ -7,27 +7,22 @@
 
 void *task_code(void *argument)
 {
-   int tid;
+    int tid;
  
-   tid = *((int *) argument);
-   while(1){
-     printf("Hello World! It's me, thread %d!\n", tid);
+    tid = *((int *) argument);
+    while(true){
+        printf("Hello World! It's me, thread %d!\n", tid);
 
-
-     std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+     
+        renderMessageQueueMutex.lock();
+        renderMessageQueue.push(123);
+     
+        renderMessageQueueMutex.unlock();
 
      
-     renderMessageQueueMutex.lock();
-     renderMessageQueue.push(123);
-
-
-
-     
-     renderMessageQueueMutex.unlock();
-
-     
-   }
-   return NULL;
+    }
+    return NULL;
 }
 
 // std::this_thread::sleep_for(std::chrono::milliseconds(x));
@@ -64,13 +59,13 @@ void *task_code(void *argument)
 network::network(){
 
 
-  int * thread_args = new int;
-  *thread_args = 123;
-  pthread_create(&thread, NULL, task_code, (void *) thread_args);
-  // rc = pthread_create(&threads[i], NULL, task_code, (void *) &thread_args[i]);
+    int * thread_args = new int;
+    *thread_args = 123;
+    pthread_create(&thread, NULL, task_code, (void *) thread_args);
+    // rc = pthread_create(&threads[i], NULL, task_code, (void *) &thread_args[i]);
 }
 
 
 network::~network(){
-  // pthread_join(thread, NULL);
+    // pthread_join(thread, NULL);
 }
