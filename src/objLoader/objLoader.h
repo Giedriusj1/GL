@@ -1,51 +1,44 @@
-#ifndef OBJ_LOADER_H
-#define OBJ_LOADER_H
-
+#pragma once
 
 #include "obj_parser.h"
 
-class objLoader
-{
+class objLoader {
 public:
-	objLoader() {}
-	~objLoader()
-	{
-		delete_obj_data(&data);
-	}
+  objLoader() {}
+  ~objLoader() { delete_obj_data(&data); }
 
-	int load(char *filename);
+  int load(char *filename);
 
-	obj_vector **vertexList;
-	obj_vector **normalList;
-	obj_vector **textureList;
-	
-	obj_face **faceList;
-	obj_sphere **sphereList;
-	obj_plane **planeList;
-	
-	obj_light_point **lightPointList;
-	obj_light_quad **lightQuadList;
-	obj_light_disc **lightDiscList;
-	
-	obj_material **materialList;
-	
-	int vertexCount;
-	int normalCount;
-	int textureCount;
+  obj_vector **vertexList;
+  obj_vector **normalList;
+  obj_vector **textureList;
 
-	int faceCount;
-	int sphereCount;
-	int planeCount;
+  obj_face **faceList;
+  obj_sphere **sphereList;
+  obj_plane **planeList;
 
-	int lightPointCount;
-	int lightQuadCount;
-	int lightDiscCount;
+  obj_light_point **lightPointList;
+  obj_light_quad **lightQuadList;
+  obj_light_disc **lightDiscList;
 
-	int materialCount;
+  obj_material **materialList;
 
-	obj_camera *camera;
+  int vertexCount;
+  int normalCount;
+  int textureCount;
+
+  int faceCount;
+  int sphereCount;
+  int planeCount;
+
+  int lightPointCount;
+  int lightQuadCount;
+  int lightDiscCount;
+
+  int materialCount;
+
+  obj_camera *camera;
+
 private:
-	obj_scene_data data;
+  obj_scene_data data;
 };
-
-#endif

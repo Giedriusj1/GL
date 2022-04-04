@@ -3,18 +3,17 @@
 #include <GL/gl.h>
 #include <iostream>
 
-class objectLoader{
+class objectLoader {
 
- public:
+public:
   objectLoader(const std::string objectName);
   ~objectLoader();
-  
-  GLfloat * getObjectVertexArray();
+
+  GLfloat *getObjectVertexArray();
   size_t getObjectSize();
 
-  GLfloat * m_TriangleVertexArray;
-  size_t m_size; 
   int m_faceCount;
-  
-
+  GLfloat *m_TriangleVertexArray;
+    
+  size_t m_size;
 };

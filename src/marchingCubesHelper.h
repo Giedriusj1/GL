@@ -1,12 +1,11 @@
 #include "shader.h"
 
-
-class marchingCube{
+class marchingCube {
 public:
-    marchingCube();
-    ~marchingCube();
-  
-    GLfloat * m_TriangleVertexArray;
-    size_t m_size; 
-    int m_faceCount;
+  marchingCube();
+  ~marchingCube();
+
+  GLfloat *m_TriangleVertexArray;
+  size_t m_size;
+  int m_faceCount;
 };

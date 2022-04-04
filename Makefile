@@ -1,4 +1,4 @@
-OBJS = control.o main.o objectLoader.o render.o shader.o marchingCubesHelper.o shaderManager.o noise.o list.o objLoader.o obj_parser.o string_extra.o network.o
+OBJS = control.o main.o objectLoader.o render.o shader.o marchingCubesHelper.o shaderManager.o list.o objLoader.o obj_parser.o string_extra.o
 CC = clang++
 DEBUG = -g3
 CFLAGS = -Wall -std=c++11 -c $(DEBUG)
@@ -33,9 +33,6 @@ marchingCubesHelper.o:
 	$(CC) $(CFLAGS)  src/marchingCubesHelper.cpp -c
 
 
-noise.o: 
-	$(CC) $(CFLAGS)  src/noise.cpp -c
-
 list.o: 
 	$(CC) $(CFLAGS)  src/objLoader/list.cpp -c -w
 
@@ -47,9 +44,6 @@ obj_parser.o:
 
 string_extra.o: 
 	$(CC) $(CFLAGS) src/objLoader/string_extra.cpp -c -w
-
-network.o: 
-	$(CC) $(CFLAGS) src/network/network.cpp -c -w
 
 clean:
 	rm *.o
